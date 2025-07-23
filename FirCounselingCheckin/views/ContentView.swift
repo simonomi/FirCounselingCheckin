@@ -2,80 +2,76 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-	@Environment(\.modelContext) private var modelContext
-	@Environment(\.colorScheme) private var colorScheme
-	
-	@Query private var items: [Item]
-	
-	let dateStyle: Date.FormatStyle = .dateTime.day().month(.wide)
-	
-	var defaultListRowBackground: Color {
-		switch colorScheme {
-			case .light:
-				Color(uiColor: .systemBackground)
-			case .dark:
-				Color(uiColor: .secondarySystemBackground)
-			@unknown default:
-				Color(uiColor: .systemBackground)
-		}
-	}
+	@State private var clientName = ""
+	@State private var therapist: Int? = nil
+	@State private var checkedInAlert = false
+	@State private var inSettings = false
 	
 	var body: some View {
 		NavigationStack {
-			List {
-//				Section(Date.now.formatted(dateStyle)) {
-//					Text("No clients yet")
-//						.frame(maxWidth: .infinity)
-//						.foregroundStyle(.secondary)
-//				}
+			Form {
+				TextField("Name (optional)", text: $clientName)
 				
-				Section(Date.now.formatted(dateStyle)) {
-					listRow(for: "Eloise", secondsAgo: 0)
+				Picker("Therapist", selection: $therapist) {
+					Text("No selection")
+						.foregroundStyle(.secondary)
+						.tag(nil as Int?)
 					
-					listRow(for: "Sofia", secondsAgo: 60)
-					
-					listRow(for: "Bethany", secondsAgo: 300)
+					TherapistView(name: "Jen Pond").tag(1)
+					TherapistView(name: "Cooler Jen Pond").tag(2)
+					TherapistView(name: "Less Cool Jen Pond").tag(3)
+					TherapistView(name: "Jennifer Pond").tag(4)
+					TherapistView(name: "Jennifer Pondifer").tag(5)
+					TherapistView(name: "867-5309/Jenny Pond").tag(6)
+					TherapistView(name: "Jen Pondland").tag(7)
+					TherapistView(name: "Jen Pond...?").tag(8)
+					TherapistView(name: "Pond, Jen Pond").tag(9)
+					TherapistView(name: "A New Jen Pond").tag(10)
+					TherapistView(name: "Jen Pond Strikes Back").tag(11)
+					TherapistView(name: "Jen Pond: The Squeakquel").tag(12)
+					TherapistView(name: "Jen Pond: Chipwrecked").tag(12)
 				}
+				.pickerStyle(.inline)
 				
-				Section(Date.now.advanced(by: -86400).formatted(dateStyle)) {
-					listRow(for: "August", secondsAgo: 500)
-					
-					listRow(for: "Penelope", secondsAgo: 2000)
+				Section {
+					Button("Check in") {
+						checkedInAlert = true
+					}
+					.font(.title)
+					.buttonStyle(.borderedProminent)
+					.frame(maxWidth: .infinity)
+					.listRowBackground(EmptyView())
+					.disabled(therapist == 0)
 				}
 			}
-			.listRowSpacing(8)
-		}
-	}
-	
-	func listRow(for name: String, secondsAgo: TimeInterval) -> some View {
-		let background = if secondsAgo < 5 * 60 {
-			defaultListRowBackground.mix(with: .green, by: 0.25)
-		} else {
-			defaultListRowBackground
-		}
-		
-		return HStack {
-			Text("\(name) is here")
-			
-			Spacer()
-			
-			if secondsAgo < 60 {
-				Text("now")
-					.foregroundStyle(.green)
-			} else if secondsAgo < 5 * 60 {
-				let minutesAgo = Int(secondsAgo / 60)
-				Text("\(minutesAgo) minute\(minutesAgo == 1 ? "" : "s") ago")
-					.foregroundStyle(.orange)
-			} else {
-				Text(.now.addingTimeInterval(-secondsAgo), style: .time)
-					.foregroundStyle(.secondary)
+			.navigationTitle("Check in")
+			.alert("You have been checked in", isPresented: $checkedInAlert) {
+				Button("Ok") {
+					withAnimation {
+						clientName = ""
+						therapist = 0
+						checkedInAlert = false
+					}
+				}
+			}
+			.toolbar {
+				ToolbarItem {
+					Button {
+						withAnimation {
+							inSettings = true
+						}
+					} label: {
+						Label("Settings", systemImage: "gear")
+					}
+				}
+			}
+			.sheet(isPresented: $inSettings) {
+				SettingsSheet(isPresented: $inSettings)
 			}
 		}
-//		.listRowBackground(background)
 	}
 }
 
 #Preview {
 	ContentView()
-		.modelContainer(for: Item.self, inMemory: true)
 }
