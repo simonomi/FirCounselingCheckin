@@ -20,6 +20,11 @@
 		AB9DE7B32E39BBAB00E3F6EC /* TherapistSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B22E39BBAB00E3F6EC /* TherapistSettingsView.swift */; };
 		AB9DE7B72E3AF88000E3F6EC /* TherapistImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B62E3AF88000E3F6EC /* TherapistImageView.swift */; };
 		AB9DE7B92E3AFE4C00E3F6EC /* fir.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB9DE7B82E3AFE4C00E3F6EC /* fir.icon */; };
+		ABDD0C862E3BFAC20088FF2C /* Pushover.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD0C852E3BFAC20088FF2C /* Pushover.swift */; };
+		ABDD0C882E3BFADE0088FF2C /* PushoverResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD0C872E3BFADE0088FF2C /* PushoverResponse.swift */; };
+		ABDD0C8A2E3BFAEB0088FF2C /* PushoverErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD0C892E3BFAEB0088FF2C /* PushoverErrorResponse.swift */; };
+		ABDD0C8C2E3BFAFF0088FF2C /* PushoverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD0C8B2E3BFAFF0088FF2C /* PushoverError.swift */; };
+		ABDD0C8E2E3C00150088FF2C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDD0C8D2E3C00150088FF2C /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		AB9DE7B22E39BBAB00E3F6EC /* TherapistSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistSettingsView.swift; sourceTree = "<group>"; };
 		AB9DE7B62E3AF88000E3F6EC /* TherapistImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistImageView.swift; sourceTree = "<group>"; };
 		AB9DE7B82E3AFE4C00E3F6EC /* fir.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = fir.icon; sourceTree = "<group>"; };
+		ABDD0C852E3BFAC20088FF2C /* Pushover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pushover.swift; sourceTree = "<group>"; };
+		ABDD0C872E3BFADE0088FF2C /* PushoverResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushoverResponse.swift; sourceTree = "<group>"; };
+		ABDD0C892E3BFAEB0088FF2C /* PushoverErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushoverErrorResponse.swift; sourceTree = "<group>"; };
+		ABDD0C8B2E3BFAFF0088FF2C /* PushoverError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushoverError.swift; sourceTree = "<group>"; };
+		ABDD0C8D2E3C00150088FF2C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = FirCounselingCheckin/Utilities.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,8 @@
 				AB67CF3E2E305F40001115A9 /* FirCounselingCheckinApp.swift */,
 				AB67CF4E2E305FA0001115A9 /* views */,
 				AB67CF4F2E305FA7001115A9 /* model */,
+				ABDD0C842E3BFA940088FF2C /* pushover */,
+				ABDD0C8D2E3C00150088FF2C /* Utilities.swift */,
 				AB67CF4D2E305F88001115A9 /* assets */,
 			);
 			path = FirCounselingCheckin;
@@ -161,6 +173,17 @@
 				AB67CF3F2E305F40001115A9 /* Therapist.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		ABDD0C842E3BFA940088FF2C /* pushover */ = {
+			isa = PBXGroup;
+			children = (
+				ABDD0C852E3BFAC20088FF2C /* Pushover.swift */,
+				ABDD0C872E3BFADE0088FF2C /* PushoverResponse.swift */,
+				ABDD0C892E3BFAEB0088FF2C /* PushoverErrorResponse.swift */,
+				ABDD0C8B2E3BFAFF0088FF2C /* PushoverError.swift */,
+			);
+			path = pushover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,13 +323,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDD0C8C2E3BFAFF0088FF2C /* PushoverError.swift in Sources */,
+				ABDD0C862E3BFAC20088FF2C /* Pushover.swift in Sources */,
 				AB9DE7AF2E39B47700E3F6EC /* PasswordView.swift in Sources */,
 				AB67CF422E305F40001115A9 /* ContentView.swift in Sources */,
+				ABDD0C8E2E3C00150088FF2C /* Utilities.swift in Sources */,
 				AB9DE7AD2E39B44A00E3F6EC /* SettingsSheet.swift in Sources */,
+				ABDD0C8A2E3BFAEB0088FF2C /* PushoverErrorResponse.swift in Sources */,
 				AB9DE7B12E39B99600E3F6EC /* SettingsView.swift in Sources */,
 				AB9DE7B32E39BBAB00E3F6EC /* TherapistSettingsView.swift in Sources */,
 				AB67CF432E305F40001115A9 /* FirCounselingCheckinApp.swift in Sources */,
 				AB67CF442E305F40001115A9 /* Therapist.swift in Sources */,
+				ABDD0C882E3BFADE0088FF2C /* PushoverResponse.swift in Sources */,
 				AB9DE7B72E3AF88000E3F6EC /* TherapistImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

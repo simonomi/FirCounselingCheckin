@@ -8,7 +8,7 @@ final class Therapist: Identifiable {
 	var sortIndex: Int
 	
 	var name: String
-	var apiKey: String
+	var userToken: String
 	
 	@Attribute(.externalStorage)
 	var imageData: Data?
@@ -32,7 +32,7 @@ final class Therapist: Identifiable {
 		self.sortIndex = sortOrder
 		
 		name = "New Therapist"
-		apiKey = ""
+		userToken = ""
 		imageData = nil
 	}
 	

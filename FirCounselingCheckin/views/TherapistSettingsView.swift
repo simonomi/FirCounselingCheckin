@@ -27,7 +27,7 @@ struct TherapistSettingsView: View {
 				TextField("Name", text: $therapist.name)
 					.textFieldStyle(.roundedBorder)
 				
-				TextField("api key", text: $therapist.apiKey)
+				TextField("Pushover user key", text: $therapist.userToken)
 					.textFieldStyle(.roundedBorder)
 			}
 		}
