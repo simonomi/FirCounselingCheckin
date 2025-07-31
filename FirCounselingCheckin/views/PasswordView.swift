@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PasswordView: View {
-	@AppStorage("settingsPassword") private var settingsPassword: String?
+	@AppStorage("settingsPassword") private var settingsPassword: String = ""
 	
 	@State private var passwordInput = ""
 	@FocusState private var isFocused: Bool
@@ -29,13 +29,9 @@ struct PasswordView: View {
 					}
 				}
 			
-			if let settingsPassword {
-				Text(settingsPassword)
-			}
-			
 			Button("Submit", action: submitPassword)
 			.onAppear {
-				if settingsPassword == nil {
+				if settingsPassword.isEmpty {
 					successAction()
 				}
 			}

@@ -16,7 +16,6 @@ struct TherapistSettingsView: View {
 			.photosPickerStyle(.presentation)
 			.buttonStyle(.borderless)
 			.onChange(of: selectedPhoto) { _, newValue in
-				// TODO: loading, failures, etc
 				guard let newValue else { return }
 				Task {
 					therapist.imageData = try! await newValue.loadTransferable(type: Data.self)

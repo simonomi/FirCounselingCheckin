@@ -3,12 +3,14 @@ import SwiftData
 
 struct SettingsView: View {
 	@Environment(\.modelContext) private var modelContext
-	@AppStorage("settingsPassword") private var settingsPassword: String?
+	@AppStorage("settingsPassword") private var settingsPassword: String = ""
+	
+	@State private var editingPassword = false
 	
 	@Query(sort: \Therapist.sortIndex, animation: .default) private var therapists: [Therapist]
 	
 	var setPasswordLabel: String {
-		if settingsPassword == nil {
+		if settingsPassword.isEmpty {
 			"Set password"
 		} else {
 			"Change password"
@@ -18,9 +20,10 @@ struct SettingsView: View {
 	var body: some View {
 		Form {
 			Button(setPasswordLabel) {
-				print("set password")
-//				settingsPassword = "Test"
-				settingsPassword = nil
+				editingPassword = true
+			}
+			.alert("Settings password", isPresented: $editingPassword) {
+				TextField("Password", text: $settingsPassword)
 			}
 			
 			Section("Therapists") {

@@ -68,13 +68,13 @@ struct ContentView: View {
 			}
 			.navigationTitle("Check in")
 			.alert("You have been checked in", isPresented: $checkedInAlert) {
-				Button("Ok", action: resetForm)
+				Button("OK", action: resetForm)
 			}
 			.alert(
 				errorMessage ?? "An unknown error has occured, please try again later",
 				isPresented: $errorAlert
 			) {
-				Button("Ok") {
+				Button("OK") {
 					checkingIn = false
 					errorMessage = nil
 					errorAlert = false
