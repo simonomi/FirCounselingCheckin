@@ -27,6 +27,7 @@ struct TherapistSettingsView: View {
 					.textFieldStyle(.roundedBorder)
 				
 				TextField("Pushover user key", text: $therapist.userToken)
+					.textInputAutocapitalization(.never)
 					.textFieldStyle(.roundedBorder)
 			}
 		}

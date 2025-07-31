@@ -20,6 +20,7 @@ struct PasswordView: View {
 	var body: some View {
 		Form {
 			TextField("Password", text: $passwordInput)
+				.textInputAutocapitalization(.never)
 				.submitLabel(.go)
 				.onSubmit(submitPassword)
 				.focused($isFocused)

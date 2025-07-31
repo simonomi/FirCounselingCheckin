@@ -24,6 +24,8 @@ struct SettingsView: View {
 			}
 			.alert("Settings password", isPresented: $editingPassword) {
 				TextField("Password", text: $settingsPassword)
+					.textInputAutocapitalization(.never)
+					.submitLabel(.go)
 			}
 			
 			Section("Therapists") {
