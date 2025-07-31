@@ -14,12 +14,12 @@
 		AB67CF472E305F42001115A9 /* FirCounselingCheckinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67CF452E305F42001115A9 /* FirCounselingCheckinTests.swift */; };
 		AB67CF4B2E305F44001115A9 /* FirCounselingCheckinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67CF482E305F44001115A9 /* FirCounselingCheckinUITests.swift */; };
 		AB67CF4C2E305F44001115A9 /* FirCounselingCheckinUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB67CF492E305F44001115A9 /* FirCounselingCheckinUITestsLaunchTests.swift */; };
-		AB9DE7AB2E39AE7700E3F6EC /* fir.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB9DE7AA2E39AE7700E3F6EC /* fir.icon */; };
 		AB9DE7AD2E39B44A00E3F6EC /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7AC2E39B44A00E3F6EC /* SettingsSheet.swift */; };
 		AB9DE7AF2E39B47700E3F6EC /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7AE2E39B47700E3F6EC /* PasswordView.swift */; };
 		AB9DE7B12E39B99600E3F6EC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B02E39B99600E3F6EC /* SettingsView.swift */; };
 		AB9DE7B32E39BBAB00E3F6EC /* TherapistSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B22E39BBAB00E3F6EC /* TherapistSettingsView.swift */; };
-		AB9DE7B52E39BE1500E3F6EC /* TherapistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B42E39BE1500E3F6EC /* TherapistView.swift */; };
+		AB9DE7B72E3AF88000E3F6EC /* TherapistImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9DE7B62E3AF88000E3F6EC /* TherapistImageView.swift */; };
+		AB9DE7B92E3AFE4C00E3F6EC /* fir.icon in Resources */ = {isa = PBXBuildFile; fileRef = AB9DE7B82E3AFE4C00E3F6EC /* fir.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +51,12 @@
 		AB67CF452E305F42001115A9 /* FirCounselingCheckinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirCounselingCheckinTests.swift; sourceTree = "<group>"; };
 		AB67CF482E305F44001115A9 /* FirCounselingCheckinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirCounselingCheckinUITests.swift; sourceTree = "<group>"; };
 		AB67CF492E305F44001115A9 /* FirCounselingCheckinUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirCounselingCheckinUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AB9DE7AA2E39AE7700E3F6EC /* fir.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = fir.icon; sourceTree = "<group>"; };
 		AB9DE7AC2E39B44A00E3F6EC /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		AB9DE7AE2E39B47700E3F6EC /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		AB9DE7B02E39B99600E3F6EC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AB9DE7B22E39BBAB00E3F6EC /* TherapistSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistSettingsView.swift; sourceTree = "<group>"; };
-		AB9DE7B42E39BE1500E3F6EC /* TherapistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistView.swift; sourceTree = "<group>"; };
+		AB9DE7B62E3AF88000E3F6EC /* TherapistImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherapistImageView.swift; sourceTree = "<group>"; };
+		AB9DE7B82E3AFE4C00E3F6EC /* fir.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = fir.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				AB67CF3B2E305F40001115A9 /* Assets.xcassets */,
-				AB9DE7AA2E39AE7700E3F6EC /* fir.icon */,
+				AB9DE7B82E3AFE4C00E3F6EC /* fir.icon */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				AB67CF3C2E305F40001115A9 /* ContentView.swift */,
-				AB9DE7B42E39BE1500E3F6EC /* TherapistView.swift */,
+				AB9DE7B62E3AF88000E3F6EC /* TherapistImageView.swift */,
 				AB9DE7AC2E39B44A00E3F6EC /* SettingsSheet.swift */,
 				AB9DE7B02E39B99600E3F6EC /* SettingsView.swift */,
 				AB9DE7B22E39BBAB00E3F6EC /* TherapistSettingsView.swift */,
@@ -274,7 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9DE7AB2E39AE7700E3F6EC /* fir.icon in Resources */,
+				AB9DE7B92E3AFE4C00E3F6EC /* fir.icon in Resources */,
 				AB67CF412E305F40001115A9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,9 +305,9 @@
 				AB9DE7AD2E39B44A00E3F6EC /* SettingsSheet.swift in Sources */,
 				AB9DE7B12E39B99600E3F6EC /* SettingsView.swift in Sources */,
 				AB9DE7B32E39BBAB00E3F6EC /* TherapistSettingsView.swift in Sources */,
-				AB9DE7B52E39BE1500E3F6EC /* TherapistView.swift in Sources */,
 				AB67CF432E305F40001115A9 /* FirCounselingCheckinApp.swift in Sources */,
 				AB67CF442E305F40001115A9 /* Therapist.swift in Sources */,
+				AB9DE7B72E3AF88000E3F6EC /* TherapistImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = FirCounselingCheckin/FirCounselingCheckin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -473,6 +473,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fir Check-in";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -492,11 +493,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -506,7 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = FirCounselingCheckin/FirCounselingCheckin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -514,6 +515,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fir Check-in";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -533,11 +535,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;

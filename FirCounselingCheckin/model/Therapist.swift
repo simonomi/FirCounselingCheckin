@@ -1,13 +1,46 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
-final class Therapist {
-	var name: String
-	var image: Data
+final class Therapist: Identifiable {
+	var id: ID
+	var sortIndex: Int
 	
-	init(name: String, image: Data) {
-		self.name = name
-		self.image = image
+	var name: String
+	var apiKey: String
+	
+	@Attribute(.externalStorage)
+	var imageData: Data?
+	
+	struct ID: Hashable, Equatable, Codable {
+		var uuid: UUID
+		
+		init() {
+			uuid = UUID()
+		}
 	}
+	
+	var image: Image? {
+		imageData
+			.flatMap { UIImage(data: $0) }
+			.map { Image(uiImage: $0) }
+	}
+	
+	private init(sortOrder: Int) {
+		id = ID()
+		self.sortIndex = sortOrder
+		
+		name = "New Therapist"
+		apiKey = ""
+		imageData = nil
+	}
+	
+	convenience init(after other: Therapist?) {
+		self.init(sortOrder: other.map { $0.sortIndex + 1 } ?? 0)
+	}
+	
+#if DEBUG
+	static var preview: Therapist { Therapist(after: nil) }
+#endif
 }

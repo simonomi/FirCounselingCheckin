@@ -20,6 +20,8 @@ struct PasswordView: View {
 	var body: some View {
 		Form {
 			TextField("Password", text: $passwordInput)
+				.submitLabel(.go)
+				.onSubmit(submitPassword)
 				.focused($isFocused)
 				.onAppear {
 					withAnimation {
@@ -27,22 +29,28 @@ struct PasswordView: View {
 					}
 				}
 			
-			Button("Submit") {
-				if passwordInput == settingsPassword {
-					successAction()
-				} else {
-					failureAction()
-				}
-				
-				withAnimation {
-					passwordInput = ""
-				}
+			if let settingsPassword {
+				Text(settingsPassword)
 			}
+			
+			Button("Submit", action: submitPassword)
 			.onAppear {
 				if settingsPassword == nil {
 					successAction()
 				}
 			}
+		}
+	}
+	
+	func submitPassword() {
+		if passwordInput == settingsPassword {
+			successAction()
+		} else {
+			failureAction()
+		}
+		
+		withAnimation {
+			passwordInput = ""
 		}
 	}
 }
