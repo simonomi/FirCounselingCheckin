@@ -34,6 +34,8 @@ struct TherapistSettingsView: View {
 	}
 }
 
+#if DEBUG
 #Preview {
 	TherapistSettingsView(therapist: .preview)
 }
+#endif

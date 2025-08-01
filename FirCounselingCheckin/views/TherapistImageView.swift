@@ -19,6 +19,8 @@ struct TherapistImageView: View {
 	}
 }
 
+#if DEBUG
 #Preview {
 	TherapistImageView(therapist: .preview)
 }
+#endif
