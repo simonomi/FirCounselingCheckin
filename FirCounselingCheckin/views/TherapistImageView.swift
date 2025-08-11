@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TherapistImageView: View {
+	@ObservedObject
 	var therapist: Therapist
 	
 	var body: some View {

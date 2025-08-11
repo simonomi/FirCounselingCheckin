@@ -2,16 +2,13 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-@Model
-final class Therapist: Identifiable {
-	var id: ID
-	var sortIndex: Int
+final class Therapist: Identifiable, ObservableObject, Codable {
+	@Published var id: ID
 	
-	var name: String
-	var userToken: String
+	@Published var name: String
+	@Published var userToken: String
 	
-	@Attribute(.externalStorage)
-	var imageData: Data?
+	@Published var imageData: Data?
 	
 	struct ID: Hashable, Equatable, Codable {
 		var uuid: UUID
@@ -27,20 +24,37 @@ final class Therapist: Identifiable {
 			.map { Image(uiImage: $0) }
 	}
 	
-	private init(sortOrder: Int) {
+	init() {
 		id = ID()
-		self.sortIndex = sortOrder
 		
 		name = "New Therapist"
 		userToken = ""
 		imageData = nil
 	}
 	
-	convenience init(after other: Therapist?) {
-		self.init(sortOrder: other.map { $0.sortIndex + 1 } ?? 0)
+#if DEBUG
+	static var preview: Therapist { Therapist() }
+#endif
+	
+	init(from decoder: any Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		
+		id = try container.decode(Therapist.ID.self, forKey: .id)
+		name = try container.decode(String.self, forKey: .name)
+		userToken = try container.decode(String.self, forKey: .userToken)
+		imageData = try container.decodeIfPresent(Data.self, forKey: .imageData)
 	}
 	
-#if DEBUG
-	static var preview: Therapist { Therapist(after: nil) }
-#endif
+	enum CodingKeys: CodingKey {
+		case id, name, userToken, imageData
+	}
+	
+	func encode(to encoder: any Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		
+		try container.encode(id, forKey: .id)
+		try container.encode(name, forKey: .name)
+		try container.encode(userToken, forKey: .userToken)
+		try container.encodeIfPresent(imageData, forKey: .imageData)
+	}
 }

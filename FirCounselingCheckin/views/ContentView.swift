@@ -2,8 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-	@Environment(\.modelContext) private var modelContext
-	
 	@State private var clientName = ""
 	@State private var selectedTherapist: Therapist.ID? = nil
 	
@@ -15,7 +13,7 @@ struct ContentView: View {
 	
 	@State private var inSettings = false
 	
-	@Query(sort: \Therapist.sortIndex, animation: .default) private var therapists: [Therapist]
+	@Binding var therapists: [Therapist]
 	
 	var body: some View {
 		NavigationStack {
@@ -30,21 +28,7 @@ struct ContentView: View {
 						.tag(nil as Therapist.ID?)
 					
 					ForEach(therapists) { therapist in
-						HStack {
-							TherapistImageView(therapist: therapist)
-							
-							Text(therapist.name)
-							
-							if therapist.userToken == "" {
-								Label("NO USER KEY", systemImage: "exclamationmark.triangle.fill")
-									.foregroundStyle(.white)
-									.padding(7)
-									.background(.red)
-									.clipShape(RoundedRectangle(cornerRadius: 15))
-									.frame(maxWidth: .infinity, alignment: .trailing)
-							}
-						}
-						.tag(therapist.id)
+						TherapistRow(therapist: therapist)
 					}
 				}
 				.pickerStyle(.inline)
@@ -92,14 +76,14 @@ struct ContentView: View {
 				}
 			}
 			.sheet(isPresented: $inSettings) {
-				SettingsSheet(isPresented: $inSettings)
+				SettingsSheet(therapists: $therapists, isPresented: $inSettings)
 			}
 		}
 	}
 	
 	func checkIn() {
 		guard let selectedTherapist,
-			  let therapist = modelContext.model(for: selectedTherapist)
+			  let therapist = therapists.first(where: { $0.id == selectedTherapist })
 		else {
 			return
 		}
@@ -139,5 +123,5 @@ struct ContentView: View {
 }
 
 #Preview {
-	ContentView()
+	ContentView(therapists: .constant([]))
 }

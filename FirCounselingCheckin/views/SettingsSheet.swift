@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsSheet: View {
+	@Binding var therapists: [Therapist]
 	@Binding var isPresented: Bool
 	
 	@State private var isAuthenticated = false
@@ -9,7 +10,7 @@ struct SettingsSheet: View {
 		NavigationStack {
 			Group {
 				if isAuthenticated {
-					SettingsView()
+					SettingsView(therapists: $therapists)
 				} else {
 					PasswordView {
 						withAnimation {
@@ -30,6 +31,6 @@ struct SettingsSheet: View {
 #Preview {
 	Text("hi")
 		.sheet(isPresented: .constant(true)) {
-			SettingsSheet(isPresented: .constant(true))
+			SettingsSheet(therapists: .constant([]), isPresented: .constant(true))
 		}
 }
