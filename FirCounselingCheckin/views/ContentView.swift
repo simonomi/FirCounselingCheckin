@@ -6,6 +6,7 @@ struct ContentView: View {
 	@State private var selectedTherapist: Therapist.ID? = nil
 	
 	@State private var checkingIn = false
+	@State private var askForName = false
 	@State private var checkedInAlert = false
 	
 	@State private var errorAlert = false
@@ -18,11 +19,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationStack {
 			Form {
-				Section {
-					TextField("Name (optional)", text: $clientName)
-				}
-				
-				Picker("Therapist", selection: $selectedTherapist) {
+				Picker("Welcome! Please select your therapist below to check in", selection: $selectedTherapist) {
 					Text("No selection")
 						.foregroundStyle(.secondary)
 						.tag(nil as Therapist.ID?)
@@ -39,7 +36,7 @@ struct ContentView: View {
 							ProgressView()
 								.id(UUID())
 						} else {
-							Button("Check in", action: checkIn)
+							Button("Check in", action: beginCheckIn)
 							.font(.title)
 							.buttonStyle(.borderedProminent)
 							.disabled(selectedTherapist == nil)
@@ -51,6 +48,11 @@ struct ContentView: View {
 				}
 			}
 			.navigationTitle("Check in")
+			.alert("Name (optional)", isPresented: $askForName) {
+				TextField("Client", text: $clientName)
+				Button("Cancel", action: resetForm)
+				Button("OK", action: checkIn)
+			}
 			.alert("You have been checked in", isPresented: $checkedInAlert) {
 				Button("OK", action: resetForm)
 			}
@@ -81,16 +83,20 @@ struct ContentView: View {
 		}
 	}
 	
+	func beginCheckIn() {
+		checkingIn = true
+		askForName = true
+	}
+	
 	func checkIn() {
 		guard let selectedTherapist,
 			  let therapist = therapists.first(where: { $0.id == selectedTherapist })
 		else {
+			resetForm()
 			return
 		}
 		
 		Task {
-			checkingIn = true
-			
 			let clientName = if clientName.isEmpty {
 				"Your next client"
 			} else {
