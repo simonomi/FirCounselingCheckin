@@ -19,7 +19,34 @@ struct ContentView: View {
 	var body: some View {
 		NavigationStack {
 			Form {
-				Picker(selection: $selectedTherapist) {
+				Section {
+					Text(
+						"""
+						Welcome!
+						Please select your therapist below to check in
+						"""
+					)
+					.font(.largeTitle)
+					.bold()
+					.frame(maxWidth: .infinity)
+					
+					Spacer()
+					
+					Text(
+						"""
+						Bienvenido!
+						Seleccione su terapeuta para registrarse
+						"""
+					)
+					.font(.largeTitle)
+					.frame(maxWidth: .infinity)
+				}
+				.multilineTextAlignment(.center)
+				.listRowInsets(EdgeInsets())
+				.listRowBackground(EmptyView())
+				.listRowSeparator(.hidden)
+				
+				Picker("", selection: $selectedTherapist) {
 					Text("No selection")
 						.foregroundStyle(.secondary)
 						.tag(nil as Therapist.ID?)
@@ -27,10 +54,6 @@ struct ContentView: View {
 					ForEach(therapists) { therapist in
 						TherapistRow(therapist: therapist)
 					}
-				} label: {
-					Text("Welcome! Please select your therapist below to check in")
-						.textCase(nil)
-						.font(.title2)
 				}
 				.pickerStyle(.inline)
 				
@@ -51,7 +74,6 @@ struct ContentView: View {
 					.listRowBackground(EmptyView())
 				}
 			}
-			.navigationTitle("Check in")
 			.alert("Name (optional)", isPresented: $askForName) {
 				TextField("Client", text: $clientName)
 				Button("Cancel", action: resetForm)
