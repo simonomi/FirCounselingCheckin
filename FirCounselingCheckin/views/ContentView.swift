@@ -19,7 +19,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationStack {
 			Form {
-				Picker("Welcome! Please select your therapist below to check in", selection: $selectedTherapist) {
+				Picker(selection: $selectedTherapist) {
 					Text("No selection")
 						.foregroundStyle(.secondary)
 						.tag(nil as Therapist.ID?)
@@ -27,6 +27,10 @@ struct ContentView: View {
 					ForEach(therapists) { therapist in
 						TherapistRow(therapist: therapist)
 					}
+				} label: {
+					Text("Welcome! Please select your therapist below to check in")
+						.textCase(nil)
+						.font(.title2)
 				}
 				.pickerStyle(.inline)
 				
